@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI — Hemant Shukla</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">pitch.vision</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <div class="container">
+      <center>
+      <h1>SNN-RPi: Real-Time Learning on Edge</h1>
+      <h2>Spiking Neural Networks for Private, Continual Personalization</h2>
+      </center>
+      <br><br>
+
+    <div class="content-wrapper">
+
+      <section>
+        <h2><span class="sem">Overview</span></h2>
+        <p>
+            This project explores the idea: can a tiny edge device continuously observe a user and, over time, build a behavioral signal that evolves with them? This is simulated on macOS and Raspberry Pi emulators to prototype how real-time data streams can be processed into compact representations. These evolving signals are later used to steer a downstream model, enabling private, personalized responses without the need for retraining or cloud connectivity.
+        </p>
+      </section>
+
+      <section>
+        <h2><span class="sem">System Overview</span></h2>
+        <ul>
+            <li><strong>Sensor Data Collection:</strong> Real or simulated inputs such as keystroke patterns, gestures, or biosignal surrogates are captured over time.</li>
+            <li><strong>Spike Encoding:</strong> These inputs are converted into sparse, event-driven spike signals designed for low-power, asynchronous processing.</li>
+            <li><strong>Spiking Neural Processing:</strong> A lightweight spiking model integrates incoming spikes and gradually adapts based on repeated observations.</li>
+            <li><strong>Behavioral Signal Formation:</strong> As the system observes more activity, it forms a compact internal signal that implicitly reflects user behavior and adaptation.</li>
+            <li><strong>Downstream Personalization:</strong> This internal signal influences how a downstream model (e.g., a language model) responds to queries, enabling user-specific interactions.</li>
+        </ul>
+      </section>
+
+
+    <section>
+        <h2><span class="sem">Initial Validation: Local Learning on Edge Devices</span></h2>
+        <p>
+            We validated the core system on both a MacBook (M2 Max) and a Raspberry Pi emulator using synthetic spike-based data streams. These tests demonstrate that even without cloud connectivity, a consistent behavioral signature can emerge over time from noisy real-time observations.
+        </p>
+        <center>
+        <img src="figs/synthetic_behavioral_signature_convergence.png" width="70%"><br>
+        <em>Cosine similarity between the system’s internal behavioral signature and a reference pattern increases and stabilizes over time, indicating meaningful signal emergence from noisy inputs.</em>
+        </center>
+
+    </section>
+
+
+        <!-- Key Findings Section (Updated) -->
+        <section>
+        <h2><span class="sem">Key Findings</span></h2>
+        <ul>
+            <li><strong>traitSig representations stabilize</strong> with repeated spike-based input and encode consistent internal state over time.</li>
+            <li><strong>Noise rejection improves</strong> with session count — random patterns do not converge the way structured sessions do.</li>
+            <li><strong>Distinct inputs yield distinct outputs:</strong> Two users with unique patterns generate traitSigs that produce measurably different behaviors.</li>
+            <li><strong>LLM alignment is possible</strong> without fine-tuning — traitSig can steer model outputs purely via context injection.</li>
+        </ul>
+
+        <span class="sem">Comparing Learned traitSig vs. Noise</span>
+
+        <div style="text-align: center; margin-top: 20px;">
+        <img src="figs/traitsig_vs_noise_cosine.png" alt="Cosine Similarity Plot: traitSig vs Noise" style="max-width: 90%; border: 1px solid #ccc; border-radius: 8px;" />
+        <p style="font-size: 0.9em; margin-top: 8px;">
+            The learned <em>traitSig</em> (solid line) from real input converges rapidly toward ground-truth behavior,
+            while the noise-injected baseline (dashed) fails to align. This suggests the system extracts
+            structured behavioral patterns — even under noisy input conditions.
+        </p>
+        </div>
+        <span class="sem">LLM Output Divergence for Two Distinct traitSigs (Temp = 0.2)</span>
+
+        <div style="display: flex; gap: 40px; margin-top: 20px;">
+        <div style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+            <strong>User A (s002)</strong>
+            <p>To suggest a suitable weekend plan, I'll consider the traits you possess: empathetic (trait_05) and adventurous (trait_09). Here are some ideas that cater to both aspects:</p>
+            <ol>
+            <li>Volunteer at a local community event or charity organization on Saturday morning...</li>
+            <li>Sign up for a group outdoor activity like hiking, rock climbing, or kayaking...</li>
+            <li>Attend a cultural festival or art exhibition in your city...</li>
+            <li>Organize a potluck dinner party at home...</li>
+            <li>Take a weekend trip to explore a nearby city or natural attraction...</li>
+            </ol>
+        </div>
+
+        <div style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+            <strong>User B (s021)</strong>
+            <p>Based on the traits you've listed (00, 02, 05, 12, 13, and 14), it seems like you enjoy a mix of socializing, creativity, learning, and physical activities. Here are some suggestions for a well-rounded weekend:</p>
+            <ol>
+            <li>Friday Night: Catch up with friends at a local art gallery or exhibition...</li>
+            <li>Saturday Morning: Take a fitness class or go for a hike...</li>
+            <li>Saturday Afternoon: Attend a workshop or seminar on a topic that interests you...</li>
+            <li>Saturday Evening: Have dinner at a new restaurant with friends or family...</li>
+            <li>Sunday: Spend the day working on a creative project like painting or writing...</li>
+            <li>Sunday Evening: Wind down by reading a book or watching a documentary...</li>
+            </ol>
+        </div>
+        </div>
+
+<p style="font-size: 0.9em; margin-top: 10px;"><em>Note: Responses generated locally with temperature set to 0.2 to reduce randomness. Behavior is driven by upstream traitSig encoding.</em></p>
+        </section>
+
+        <!-- Use Cases Section (Reformatted) -->
+        <section>
+        <h2><span class="sem">Use Cases</span></h2>
+        <table style="border-collapse: collapse; width: 100%;">
+            <tr>
+            <td style="vertical-align: top; width: 50%; padding-right: 20px;">
+                <strong>Private Personal Assistants</strong><br>
+                traitSig lives on-device, evolves without the cloud, and enables context-aware AI at the edge.
+            </td>
+            <td style="vertical-align: top;">
+                <strong>Ambient Health Inference</strong><br>
+                Subtle changes in spike timing may correlate with stress, fatigue, or alertness levels.
+            </td>
+            </tr>
+            <tr>
+            <td style="vertical-align: top; padding-top: 15px; padding-right: 20px;">
+                <strong>Behavioral Profiling</strong><br>
+                keystroke, touch, or motion data can reveal habits without revealing identity.
+            </td>
+            <td style="vertical-align: top; padding-top: 15px;">
+                <strong>LLM Steering</strong><br>
+                Downstream models can be biased via traitSig injection — no model retraining required.
+            </td>
+            </tr>
+        </table>
+        </section>
+
+        <!-- Next Steps Section (Expanded) -->
+        <section>
+        <h2><span class="sem">Next Steps</span></h2>
+        <p>
+            The next phase moves to real Raspberry Pi hardware with actual sensor input to:
+        </p>
+        <ul>
+            <li>Log live input data and construct traitSig in real time</li>
+            <li>Compare behavior across device (Mac vs. emulator vs. hardware)</li>
+            <li>Validate traitSig's ability to reflect meaningful long-term user states</li>
+            <li>Design controlled LLM response tests with consistent decoding parameters</li>
+        </ul>
+        </section>
+  <div class="footer">Part of the <em>safe, adaptive, energy-efficient, personalized</em> AI project.</div>
+
+  <br>
+
+  <div class="footer">
+    &copy; pitch.vision — © 2025 Hemant Shukla (@StealthAI), 2025
+  </div>
+  <br>
+  <footer class="footer copyrt">
+    © 2025 Hemant Shukla. All concepts, text, and architectural direction on this site are original works in progress.
+    Unauthorized use, reproduction, or redistribution is prohibited. Collaboration and reuse with permission are encouraged.
+  <a href="license.html">License.</a>
+  </footer>
+
+</body>
+</html>

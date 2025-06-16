@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI — Hemant Shukla</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Lato', sans-serif;
+      background-color: #ffffff;
+      color: #111;
+    } */
+
+    /* .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: #0077cc;
+    } */
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem 2rem 2rem;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p.header-subtext {
+      font-size: 1.1rem;
+      color: #444;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #eee;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .category {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: #777;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .card h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .tagline {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #222;
+      margin: 0;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 3rem 1rem 2rem;
+      color: #999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- New Top Navigation Bar -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">pitch.vision</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content" id="mainContent">
+    <div class="container">
+
+      <header>
+        <h1>Crafting Tomorrow's Intelligence</h1>
+        <p class="header-subtext">
+          An evolving journey toward personal AI
+        </p>
+      </header>
+
+      <section class="motivation" style="max-width: 750px; margin: 2rem auto 0; padding: 0 2rem; text-align: center;">
+        <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Mission</h2>
+        <p style="font-size: 1.15rem; color: #333;">
+          To build a future with <span class="sem">safe</span>, <span class="sem">adaptive</span>,
+          <span class="sem">energy-efficient</span>, and <span class="sem">personalized</span> AI. These applications combine cutting-edge emerging technologies for real-time learning, memory retention, and modular agency to advance AI built for people.
+        </p>
+      </section>
+
+      <div class="grid">
+
+        <div class="card" onclick="location.href='spikegate.html';">
+          <div class="category">SNN + Transformers</div>
+          <h2>SpikeGate</h2>
+          <div class="tagline">Biologically-inspired gating for LLM alignment</div>
+          <p>A transformer model enhanced with a spiking neural gate to ensure inference-time robustness. Explores energy-efficient safety via neural gating, with contrastive diagnostics across ReLU and Sigmoid baselines.</p>
+        </div>
+
+        <div class="card" onclick="location.href='book_recommender.html';">
+          <div class="category">Agents + Tools</div>
+          <h2>Book Recommender Agent</h2>
+          <div class="tagline">Modular MCA agent pipeline with real-world hooks</div>
+          <p>An interactive agent system following emerging agent protocols, capable of planning, retrieving, and generating user-specific book suggestions. Will be reused in SNN-RPi to test modular agent portability.</p>
+        </div>
+
+        <div class="card" onclick="location.href='mlp_snn.html';">
+          <div class="category">SNN + SIGNALS</div>
+          <h2>MLP-SNN Rare Event Detector</h2>
+          <div class="tagline">    First MLP-style Spiking Neural Network for EEG Seizure Detection — trained in seconds, deployable on-device.</div>
+          <p>    A minimal MLP-style spiking neural network trained on CHB-MIT data. Demonstrates energy-efficient spike-based learning, with real-world inference code and model included. First such result using MLP-SNN on clinical EEG.</p>
+        </div>
+
+        <div class="card" onclick="location.href='snn_rpi.html';">
+          <div class="category">Continual Learning</div>
+          <h2>Personal LLMs (SNN-RPi)</h2>
+          <div class="tagline">Edge inference using real-time user vectors</div>
+          <p>Combines spiking learning on keystroke or sensor inputs with downstream LLM biasing. Demonstrates privacy-preserving personalization on-device, tested on MacBook + Raspberry Pi.</p>
+        </div>
+
+        <div class="card" onclick="location.href='coming_soon.html';">
+          <div class="category">Forward Vision</div>
+          <h2>Next Projects</h2>
+          <div class="tagline">HDC-based memory, benchmarking energy, safe agents</div>
+          <p>Plans include developing spiking benchmarks for energy profiling, integrating HDC-style embeddings for memory compression, and launching reusable agent modules across learning substrates.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="footer">
+    &copy; pitch.vision — © 2025 Hemant Shukla (@StealthAI), 2025
+  </div>
+  <br>
+  <footer class="footer copyrt">
+    © 2025 Hemant Shukla. All concepts, text, and architectural direction on this site are original works in progress.
+    Unauthorized use, reproduction, or redistribution is prohibited. Collaboration and reuse with permission are encouraged.
+  <a href="license.html">License.</a>
+  </footer>
+
+
+</body>
+</html>

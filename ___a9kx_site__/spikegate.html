@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI — Hemant Shukla</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>SpikeGate: Sparse Gates for Aligned Transformers</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fff;
+      color: #111;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+    header {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    section {
+      padding: 1rem 1rem; /* previously 3rem 2rem */
+      max-width: 800px;
+      margin: auto;   
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    /* .card {
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    } */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.6rem;
+      text-align: center;
+    }
+    th {
+      background: #f2f2f2;
+    }
+    section p,
+      section ul {
+        margin-top: 0.5rem;
+        margin-bottom: 0.05rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .zoomable {
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+    .zoomed {
+      transform: scale(2.5);
+      cursor: zoom-out;
+      z-index: 100;
+      position: relative;
+      display: block;
+      margin: auto;
+      max-width: none;
+      transform-origin: center center;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- New Top Navigation Bar -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">pitch.vision</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <h1>SpikeGate</h1>
+    <h2>Modular Spiking Gates for Sparse, Aligned Transformer Models</h2>
+  </header>
+
+  <section>
+    <h2>Motivation</h2>
+    <p>Large Language Models (LLMs) can produce fluent but unpredictable responses, especially on edge cases that fall outside their training distribution. 
+    In this project, we explore a biologically inspired solution: a spiking neural network (SNN) acting as a gate inside the residual path of a Transformer.
+    The goal is to introduce architectural alignment, not just data-driven fine-tuning. SpikeGate offers sparse, energy-efficient regulation of model behavior, opening a path toward neuromorphic safety mechanisms in modern AI.
+    </p>
+  </section>
+
+  <section id="applications">
+    <h2>Applications & Vision</h2>
+    <p>
+      SpikeGate is not just a proof of concept — it’s a primitive for safe, modular intelligence. Its sparse, interpretable gating architecture can serve as a filtering layer across various real-world systems. Below are several high-impact use cases where this paradigm offers unique advantages:
+    </p>
+    <ul>
+      <li><strong>Safe AI Validators:</strong> Use SpikeGate as a runtime gatekeeper on top of large language models to enforce semantic safety, compliance, or truthfulness — without retraining the full model.</li>
+      <li><strong>Energy-Aware Edge Agents:</strong> Embed spiking gates in low-power devices (e.g., Raspberry Pi, wearables) to personalize behavior or filter input locally before querying a remote model.</li>
+      <li><strong>Neuromorphic Finetuning Modules:</strong> Replace attention gates in transformer blocks with SpikeGate units trained on domain-specific knowledge (e.g., legal, financial, biomedical) to bias LLMs without RAG.</li>
+      <li><strong>Multi-Agent Constraint Systems:</strong> Treat each SpikeGate unit as an agent with its own objective. Composite behaviors can be shaped by layering and fusing multiple trained gates.</li>
+      <li><strong>Personalized Local Reasoning:</strong> Extend the learnVec pipeline by training a SpikeGate from a user’s daily behavioral data to bias LLM responses toward lived context, in real-time.</li>
+    </ul>
+    <p>
+      These are early explorations. The longer-term goal is to modularize intelligence itself — to separate signal from noise before it enters a model — and to do so in a way that is sparse, energy-efficient, and aligned by construction.
+    </p>
+  </section>
+
+  <section>
+    <h2>Architecture Overview</h2>
+    <p>The SpikeTransformer integrates learnable spiking gates that apply sparsity constraints. We trained a lightweight Transformer with binary sentiment labels on the SST-2 dataset (5000 examples), using a BCE loss plus optional spike sparsity penalty. A custom vocab emphasizes emotional and ambiguous terms.</p>
+    <ul>
+      <li>Training for 30 epochs on Apple M2 Max (MPS backend)</li>
+      <li>Mean spike activity consistently under 0.5</li>
+      <li>Drop-in gate replacement with no architectural change</li>
+    </ul>
+
+    <figure style="text-align: center;">
+      <img src="figs/residual_spikegate_block.png" alt="Residual Block with SpikeGate" style="max-width: 50%; height: auto; border: 1px solid #ffffff;">
+      <figcaption style="margin-top: 0.5rem; font-size: 0.9rem;">
+        A residual block enhanced with a sparse SpikeGate module. Information flow is modulated based on spike dynamics before LayerNorm is applied.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- <section id="formulation">
+    <h2>SpikeGate Formulation</h2>
+    <p>SpikeGate operates inside a residual block:</p>
+    <p>
+      $$x_{\text{out}} = \text{LayerNorm}\left(x + \text{SpikeGate}(x)\right)$$
+    </p>
+    <p>
+      In our case, the input \( x \) represents the token embeddings of a sentence. Unlike classical SNNs, where \( x(t) \) evolves over time, our formulation treats the input as a static vector, and the gating dynamics are applied across the token dimension.
+    </p>
+    <p>
+      This simplification enables us to leverage spiking behavior without requiring explicit temporal coding or recurrent dynamics during inference.
+    </p>
+
+    <p>Each spike neuron computes its output as:</p>
+    <p>
+      $$s_i(t) = H(u_i(t) - \theta), \quad u_i(t+1) = \alpha u_i(t) + w_i x(t)$$
+    </p>
+    <p>To enable training, we apply a surrogate gradient during backpropagation:</p>
+    <p>
+      $$\frac{\partial s_i}{\partial u_i} \approx \sigma'(u_i - \theta)$$
+    </p>
+    <p>Where \( H \) is the Heaviside function, \( \alpha \) is a decay constant, and \( \sigma' \) is a smooth approximation (e.g., fast sigmoid).</p>
+  </section> -->
+
+  <section id="formulation">
+    <h2>SpikeGate Formulation</h2>
+
+    <p>
+      At the heart of SpikeGate is a spiking neural module that acts as a selective gate for token-level information. It operates inside a residual block in the transformer backbone:
+    </p>
+
+    <p style="text-align: center; font-size: 1.2rem;">
+      \( x_{\text{out}} = \text{LayerNorm}\left(x + \text{SpikeGate}(x)\right) \)
+    </p>
+
+    <p>
+      This structure preserves the benefits of residual learning while introducing a sparse, content-aware gating mechanism. Unlike standard attention or feedforward layers, SpikeGate modulates input flow based on learned spiking activity patterns that emerge from training.
+    </p>
+
+    <p>
+      The input \( x \) represents token embeddings for a given sentence. While traditional spiking networks model temporal dynamics, our formulation simplifies this by applying the spiking gate across token dimensions — treating tokens as quasi-temporal activations.
+    </p>
+
+    <p>
+      Internally, each neuron in the SpikeGate module integrates a signal derived from the input and generates binary-like activity that controls which features pass through. During training, surrogate gradient techniques are used to enable end-to-end optimization.
+    </p>
+
+    <p>
+      The result is a sparse, energy-efficient gating layer that can replace or augment traditional gates (e.g., ReLU or Sigmoid), offering interpretability and alignment potential without modifying the backbone model.
+    </p>
+    <p>
+      <strong>LayerNorm</strong> (Layer Normalization) is a standard transformer component that stabilizes training by normalizing each token's embedding vector across its dimensions. This ensures consistent scale and variance throughout the network and prevents activation drift. It does not introduce recurrence or external dependencies, and its parameters are minimal and learned.
+    </p>
+
+  </section>
+
+    <div style="background-color: #f9f9f9; padding: 1.25rem; border-left: 4px solid #fffdfd; margin: 2rem auto; max-width: 900px;">
+    <h3 style="margin-top: 0;">Why This Matters</h3>
+    <p>
+      Traditional transformer gates (like ReLU or Sigmoid) are dense, continuous, and difficult to interpret. SpikeGate introduces sparsity, binarized activations, and localized structure into the gating mechanism — allowing us to:
+    </p>
+    <ul>
+      <li>Control information flow through interpretable, discrete events (spikes)</li>
+      <li>Replace or supplement dense gates without retraining the transformer backbone</li>
+      <li>Embed modular “filters” that behave like learned alignment agents</li>
+    </ul>
+    <p>
+      This offers a novel route to neural alignment: architectural constraints, not just data-based supervision.
+    </p>
+  </div>
+
+  <!-- <section>
+    <h2>Sparse Activation: Spike vs. No-Spike</h2>
+    <div class="grid">
+      <div class="card" onclick="location.href='figs/test_off_spike_map.png';">
+        <h3>Without SpikeGate</h3>
+        <img src="figs/test_off_spike_map.png" alt="Dense ReLU-like activity">        
+      </div>
+      <div class="card" onclick="location.href='figs/test_on_spike_map.png';">
+        <h3>With SpikeGate</h3>
+        <img src="figs/test_on_spike_map.png" alt="Sparse SpikeGate activation">
+      </div>
+    </div>
+    <p>SpikeGate introduces clear selectivity on emotionally loaded tokens, while standard gates activate broadly and indiscriminately.</p>
+  </section> -->
+
+  <section>
+    <h2>Sparse Activation: Spike vs. No-Spike</h2>
+    <div class="grid">
+      <a href="figs/test_off_spike_map.png" target="_blank" class="card-link">
+        <div class="card">
+          <h2>Without SpikeGate</h2>
+          <img src="figs/test_off_spike_map.png" alt="Dense ReLU-like activity">
+        </div>
+      </a>
+      <a href="figs/test_on_spike_map.png" target="_blank" class="card-link">
+        <div class="card">
+          <h2>With SpikeGate</h2>
+          <img src="figs/test_on_spike_map.png" alt="Sparse SpikeGate activation">
+        </div>
+      </a>
+    </div>
+    <p>SpikeGate introduces clear selectivity on emotionally loaded tokens, while standard gates activate broadly and indiscriminately.</p>
+  </section>
+
+  <!-- <section>
+    <h2>Token-Level Raster Plot</h2>
+    <div class="grid">
+      <div class="card" onclick="location.href='figs/spike_raster_awful_acting.png';">
+        <h2>"Absolutely Awful Acting"</h2>
+        <img src="figs/spike_raster_awful_acting.png" alt="Grey-scale spike intensity">
+      </div>
+      <div class="card" onclick="location.href='figs/spike_raster_i_love_this.png';">
+        <h2>"I love this"</h2>
+        <img src="figs/spike_raster_i_love_this.png" alt="Black and white spike overlay">
+      </div>
+    </div>    <p>For the sentence “Absolutely awful acting”, we see spike activity is localized on key sentiment-bearing tokens. This sparsity offers interpretability at the neuron level.</p>
+  </section> -->
+
+  <section>
+    <h2>Token-Level Raster Plot</h2>
+    <div class="grid">
+      <a href="figs/spike_raster_awful_acting.png" target="_blank" class="card-link">
+        <div class="card">
+        <h2>"Absolutely Awful Acting"</h2>
+        <img src="figs/spike_raster_awful_acting.png" alt="Spike raster awful acting">
+        </div>
+      </a>
+      <a href="figs/spike_raster_i_love_this.png" target="_blank" class="card-link">
+        <div class="card">
+        <h2>"I love this"</h2>
+        <img src="figs/spike_raster_i_love_this.png" alt="Spike raster I love this">
+        </div>
+      </a>
+    </div>
+    <p>For the sentence “Absolutely awful acting”, we see spike activity is localized on key sentiment-bearing tokens. This sparsity offers interpretability at the neuron level.</p>
+  </section>
+
+  <!-- <section>
+    <h2>Why Binary Spikes?</h2>
+    <p>Real biological neurons often exhibit graded or probabilistic firing. In practice, this appears as grey-scale activations in heatmaps. However, to simplify analysis and interpretability, we hard-thresholded spike activations to produce binary outputs — black for silence, white for firing.</p>
+    <p>This decision enables clearer diagnostic overlays and sparse gating behavior, useful for alignment testing and token attribution.</p>
+    <div class="grid">
+      <div class="card" onclick="location.href='figs/spike_soft_overlay.png';">
+        <h2>Real-Valued Spikes</h2>
+        <img src="figs/spike_soft_overlay.png" alt="Grey-scale spike intensity">
+      </div>
+      <div class="card" onclick="location.href='figs/spike_binary_overlay.png';">
+        <h2>Binary Spikes (Thresholded)</h2>
+        <img src="figs/spike_binary_overlay.png" alt="Black and white spike overlay">
+      </div>
+    </div>
+  </section> -->
+
+  <section>
+    <h2>Why Binary Spikes?</h2>
+    <p>Real biological neurons often exhibit graded or probabilistic firing. In practice, this appears as grey-scale activations in heatmaps. However, to simplify analysis and interpretability, we hard-thresholded spike activations to produce binary outputs — black for silence, white for firing.</p>
+    <p>This decision enables clearer diagnostic overlays and sparse gating behavior, useful for alignment testing and token attribution.</p>
+    <div class="grid">
+      <a href="figs/spike_soft_overlay.png" target="_blank" class="card-link">
+        <div class="card">
+        <h2>Real-Valued Spikes</h2>
+        <img src="figs/spike_soft_overlay.png" alt="Grey-scale spike intensity">
+        </div>
+      </a>
+      <a href="figs/spike_binary_overlay.png" target="_blank" class="card-link">
+        <div class="card">
+        <h2>Binary Spikes (Thresholded)</h2>
+        <img src="figs/spike_binary_overlay.png" alt="Black and white spike overlay">
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- <section>
+    <h2>Neuron Consistency Over Time</h2>
+    <div class="card" onclick="location.href='figs/neuron_activity_20runs.png';">
+    <img src="figs/neuron_activity_20runs.png" alt="Spike repeatability histogram">
+    </div>
+    <p>Running the same sentence 20 times shows consistent neuron activity — certain neurons always fire on key semantics. This makes spike patterns predictable, stable, and potentially decodable.</p>
+  </section> -->
+
+
+  <section>
+    <h2>Neuron Consistency Over Time</h2>
+      <a href="figs/neuron_activity_20runs.png" target="_blank" class="card-link">
+        <div class="card">
+        <img src="figs/neuron_activity_20runs.png" alt="Spike repeatability histogram">
+        </div>
+      </a>
+  </section>
+
+  <section>
+    <h2>Prediction Correctness (Grouped by Semantic Category)</h2>
+    <p>
+      We divided diagnostic sentences into four categories — <strong>Polarity</strong>, <strong>Reversal</strong>, <strong>Sarcasm</strong>, and <strong>Ambiguity</strong> — to test semantic sensitivity. The heatmap shows model correctness (1 = correct, 0 = incorrect) after 30 training epochs.
+    </p>
+      <a href="figs/prediction_correctness_30epoch_grouped.png" target="_blank" class="card-link">
+        <div class="card">
+        <img src="figs/prediction_correctness_30epoch_grouped.png" alt="Grouped 30-epoch prediction correctness heatmap">
+        </div>
+      </a>
+    <p>
+      SpikeGate outperformed ReLU in reversal and sarcasm-heavy examples, while maintaining comparable accuracy on simple polarity and ambiguous inputs. This validates our alignment hypothesis: <em>that sparse, event-driven gating supports better generalization under edge cases</em>.
+    </p>
+
+    <p>SpikeGate often makes the correct call on emotionally ambiguous or sarcastic inputs, where Sigmoid and ReLU struggle. Training Sigmoid beyond 10 epochs was prohibitively slow.</p>
+
+  </section>
+
+  <!-- <section id="comparisons">
+    <h2>How Does SpikeGate Compare?</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+      
+      <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 1rem;">
+        <h3>ReLU Gate</h3>
+        <p>
+          Continuous, unbounded, and dense. Allows all activations through unless zeroed out. Common in standard transformers.
+        </p>
+      </div>
+
+      <div style="flex: 1; min-width: 250px; border: 1px solid #ccc; padding: 1rem;">
+        <h3>Sigmoid Gate</h3>
+        <p>
+          Smooth, squashing function between 0 and 1. Slower to train, hard to interpret. Rarely used as a standalone gate in practice.
+        </p>
+      </div>
+
+      <div style="flex: 1; min-width: 250px; border: 2px solid #000; padding: 1rem; background-color: #f0f8ff;">
+        <h3><b>SpikeGate</b></h3>
+        <p>
+          Sparse, binary-like gating with interpretable patterns. Faster inference, lower activity, and potential for alignment use cases.
+        </p>
+      </div>
+
+    </div>
+  </section> -->
+
+  <section id="comparisons">
+    <h2>Comparison of Gating Mechanisms</h2>
+    <table style="width:100%; border-collapse: collapse; margin-top: 1rem;">
+      <thead>
+        <tr style="background-color: #f2f2f2;">
+          <th style="text-align: left; padding: 8px; border: 1px solid #ccc;">Property</th>
+          <th style="text-align: center; padding: 8px; border: 1px solid #ccc;">ReLU</th>
+          <th style="text-align: center; padding: 8px; border: 1px solid #ccc;">Sigmoid</th>
+          <th style="text-align: center; padding: 8px; border: 1px solid #ccc;"><strong>SpikeGate</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left; padding: 8px; border: 1px solid #ccc;">Activation Type</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Continuous, piecewise linear</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Smooth, bounded (0 to 1)</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Binary, event-driven</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 8px; border: 1px solid #ccc;">Interpretability</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Low</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Low</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">High</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 8px; border: 1px solid #ccc;">Training Speed</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Fast</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Slow</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Fast</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 8px; border: 1px solid #ccc;">Sparsity</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">None</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Moderate</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">High</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 8px; border: 1px solid #ccc;">Used In</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Most transformers</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Occasional attention gating</td>
+          <td style="padding: 8px; border: 1px solid #ccc;">Experimental neuromorphic layers</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Conclusion & Next Steps</h2>
+    <p>SpikeGate demonstrates that it is possible to add biologically inspired gating to Transformers without loss in performance — and with gains in interpretability and energy efficiency.</p>
+    <ul>
+      <li>Future work: spike-based attention heads, alignment via distillation, per-user spike profiles</li>
+      <li>Use in safety-critical or low-power domains: healthcare, mobile agents, or private AI</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Publication</h2>
+    <p>This work is ongoing and currently prepared for submission as:</p>
+    <blockquote>
+      <strong>“SpikeGate: Sparse, Interpretable Gating for Aligned Transformer Models”</strong><br> Hemant Shukla (2025, in preparation)
+    </blockquote>
+    <p>Related follow-up papers may explore interpretability, semantic robustness, and energy efficiency using spiking gates in modern LLMs.</p>
+  </section>
+
+  <section id="references">
+    <h2>References</h2>
+    <ol>
+      <li>
+        E. O. Neftci, H. Mostafa, and F. Zenke.  
+        <i>Surrogate Gradient Learning in Spiking Neural Networks: Bringing the Power of Gradient-Based Optimization to SNNs</i>.  
+        <a href="https://arxiv.org/abs/1901.09948" target="_blank">
+          arXiv preprint, 2019.
+        </a>
+      </li>
+      <li>
+        L. Deng, Y. Zhang, S. Wang, et al.  
+        <i>Spiking Neural Network with Transformer Architecture for Spatio-Temporal Visual Recognition</i>.  
+        <a href="https://www.arxiv.org/pdf/2409.19764v1" target="_blank">
+          arXiv preprint, 2024.
+        </a>
+      </li>
+      <li>
+        K. He, X. Zhang, S. Ren, and J. Sun.  
+        <i>Deep Residual Learning for Image Recognition</i>.  
+        <a href="https://arxiv.org/abs/1512.03385" target="_blank">
+          arXiv preprint, 2015.
+        </a>
+      </li>
+      <li>
+      Jimmy Lei Ba, Jamie Ryan Kiros, Geoffrey E. Hinton.  
+      <i>Layer Normalization</i>.  
+      <a href="https://arxiv.org/abs/1607.06450" target="_blank">
+        arXiv preprint, 2016.
+      </a>
+      </li>
+    </ol>
+  </section>
+
+  <br>
+  <br>
+  
+  <script>
+    document.querySelectorAll('.zoomable').forEach(img => {
+      img.addEventListener('click', () => {
+        img.classList.toggle('zoomed');
+      });
+    });
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <div class="footer">
+    &copy; pitch.vision — © 2025 Hemant Shukla (@StealthAI), 2025
+  </div>
+
+  <br>
+
+  <footer class="footer copyrt">
+    © 2025 Hemant Shukla. All concepts, text, and architectural direction on this site are original works in progress.
+    Unauthorized use, reproduction, or redistribution is prohibited. Collaboration and reuse with permission are encouraged.
+  <a href="license.html">License.</a>
+  </footer>
+
+
+  <!-- <div style="margin-top: 4rem; padding-left: 4rem;">
+    <a href="projects.html" style="text-decoration: none; font-size: 1rem;">
+      ⬅ Back to Projects
+    </a>
+  </div> -->
+
+  <br>
+  <br>
+
+</body>
+</html>
+

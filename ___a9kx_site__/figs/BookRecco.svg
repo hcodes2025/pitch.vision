@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="265.50684mm"
+   height="82.127274mm"
+   viewBox="0 0 265.50684 82.127274"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-18.249769,-60.366319)">
+    <rect
+       style="opacity:0.282857;fill:#f0c2c2;fill-opacity:1;stroke:#de9fae;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+       id="rect22"
+       width="109.77001"
+       height="15.049113"
+       x="90.294685"
+       y="127.09898" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffb700;stroke-width:0.34888;stroke-dasharray:none;stroke-opacity:1"
+       id="rect16"
+       width="88.435677"
+       height="21.01442"
+       x="33.272827"
+       y="99.526619"
+       d="m 40.365193,99.526619 75.447597,0 a 5.8957119,5.8957119 45 0 1 5.89571,5.895711 v 9.48568 a 5.6330316,5.6330316 135 0 1 -5.63303,5.63303 H 39.402032 a 6.1292053,6.1292053 45 0 1 -6.129205,-6.12921 v -7.79284 a 7.0923661,7.0923661 135 0 1 7.092366,-7.092371 z"
+       transform="matrix(2.7056879,0,0,1.4498623,-71.304138,-64.620221)" />
+    <g
+       id="g17"
+       transform="translate(-44.979189,33.866682)">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+         id="rect17"
+         width="50.492977"
+         height="9.631608"
+         x="73.313156"
+         y="41.15324" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#828282;fill-opacity:1;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+         x="75.958992"
+         y="48.139008"
+         id="text17"><tspan
+           id="tspan17"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#0a0909;fill-opacity:1;stroke:none;stroke-width:0.691;stroke-opacity:1"
+           x="75.958992"
+           y="48.139008">PlannerAgent</tspan></text>
+    </g>
+    <g
+       id="g17-8"
+       transform="translate(4.4743453,-4.6407423)">
+      <g
+         id="g18"
+         transform="translate(-47.939774,53.831286)">
+        <path
+           style="fill:none;fill-opacity:1;stroke:#29772b;stroke-width:1.04185;stroke-dasharray:none;stroke-opacity:1"
+           id="rect16-4"
+           width="88.435677"
+           height="21.01442"
+           x="33.272827"
+           y="99.526619"
+           d="m 40.365193,99.526619 75.447597,0 a 5.8957119,5.8957119 45 0 1 5.89571,5.895711 v 9.48568 a 5.6330316,5.6330316 135 0 1 -5.63303,5.63303 H 39.402032 a 6.1292053,6.1292053 45 0 1 -6.129205,-6.12921 v -7.79284 a 7.0923661,7.0923661 135 0 1 7.092366,-7.092371 z"
+           transform="matrix(0.67804972,0,0,0.64876214,49.251245,-24.653657)" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+           id="rect17-5"
+           width="50.492977"
+           height="9.631608"
+           x="73.313156"
+           y="41.15324" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#2a762b;fill-opacity:0.6;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+           x="75.958992"
+           y="48.139008"
+           id="text17-8"><tspan
+             id="tspan17-9"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2a762b;fill-opacity:0.6;stroke:none;stroke-width:0.691;stroke-opacity:1"
+             x="75.958992"
+             y="48.139008">RetrieverAgent</tspan></text>
+      </g>
+      <g
+         id="g19"
+         transform="translate(-67.42379,47.493032)">
+        <path
+           style="fill:none;fill-opacity:1;stroke:#97abe5;stroke-width:0.981603;stroke-dasharray:none;stroke-opacity:1"
+           id="rect16-4-3"
+           width="88.435677"
+           height="21.01442"
+           x="33.272827"
+           y="99.526619"
+           d="m 40.365193,99.526619 75.447597,0 a 5.8957119,5.8957119 45 0 1 5.89571,5.895711 v 9.48568 a 5.6330316,5.6330316 135 0 1 -5.63303,5.63303 H 39.402032 a 6.1292053,6.1292053 45 0 1 -6.129205,-6.12921 v -7.79284 a 7.0923661,7.0923661 135 0 1 7.092366,-7.092371 z"
+           transform="matrix(0.76383623,0,0,0.64876215,132.12527,-18.315405)" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+           id="rect17-5-5"
+           width="50.492977"
+           height="9.631608"
+           x="159.04056"
+           y="47.491493" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#97abe5;fill-opacity:1;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+           x="161.6864"
+           y="54.477261"
+           id="text17-8-0"><tspan
+             id="tspan17-9-2"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#97abe5;fill-opacity:1;stroke:none;stroke-width:0.691;stroke-opacity:1"
+             x="161.6864"
+             y="54.477261">RecommenderAgent</tspan></text>
+      </g>
+      <g
+         id="g20"
+         transform="translate(43.690414,26.187058)">
+        <path
+           style="fill:none;fill-opacity:1;stroke:#ceb09b;stroke-width:1.1284;stroke-dasharray:none;stroke-opacity:1"
+           id="rect16-4-7"
+           width="88.435677"
+           height="21.01442"
+           x="33.272827"
+           y="99.526619"
+           d="m 40.365193,99.526619 75.447597,0 a 5.8957119,5.8957119 45 0 1 5.89571,5.895711 v 9.48568 a 5.6330316,5.6330316 135 0 1 -5.63303,5.63303 H 39.402032 a 6.1292053,6.1292053 45 0 1 -6.129205,-6.12921 v -7.79284 a 7.0923661,7.0923661 135 0 1 7.092366,-7.092371 z"
+           transform="matrix(0.57802596,0,0,0.64876215,100.20739,2.9429505)" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+           id="rect17-5-2"
+           width="43.579296"
+           height="8.3128147"
+           x="120.94096"
+           y="68.749847" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ceb09b;fill-opacity:0.666667;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+           x="123.58678"
+           y="75.735611"
+           id="text17-8-9"><tspan
+             id="tspan17-9-8"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ceb09b;fill-opacity:0.666667;stroke:none;stroke-width:0.691;stroke-opacity:1"
+             x="123.58678"
+             y="75.735611">CriticAgent</tspan></text>
+      </g>
+      <g
+         id="g21"
+         transform="translate(202.08323,79.090283)">
+        <path
+           style="fill:none;fill-opacity:1;stroke:#de9fae;stroke-width:1.0574;stroke-dasharray:none;stroke-opacity:1"
+           id="rect16-4-0"
+           width="88.435677"
+           height="21.01442"
+           x="33.272827"
+           y="99.526619"
+           d="m 40.365193,99.526619 75.447597,0 a 5.8957119,5.8957119 45 0 1 5.89571,5.895711 v 9.48568 a 5.6330316,5.6330316 135 0 1 -5.63303,5.63303 H 39.402032 a 6.1292053,6.1292053 45 0 1 -6.129205,-6.12921 v -7.79284 a 7.0923661,7.0923661 135 0 1 7.092366,-7.092371 z"
+           transform="matrix(0.65825283,0,0,0.64876215,-3.2691254,-49.80082)" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+           id="rect17-5-6"
+           width="50.492977"
+           height="9.631608"
+           x="20.134314"
+           y="16.006075" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#dd9fad;fill-opacity:0.686275;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+           x="22.780149"
+           y="22.991846"
+           id="text17-8-5"><tspan
+             id="tspan17-9-3"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#dd9fad;fill-opacity:0.686275;stroke:none;stroke-width:0.691;stroke-opacity:1"
+             x="22.780149"
+             y="22.991846">PurchaseAgent</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#f0c2c2;fill-opacity:1;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+         x="90.333099"
+         y="141.49718"
+         id="text22"><tspan
+           id="tspan22"
+           style="fill:#090909;fill-opacity:1;stroke:none;stroke-width:0.691"
+           x="90.333099"
+           y="141.49718">Local LLM (Mistral, Llama3)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+         x="30.050093"
+         y="68.820786"
+         id="text23"><tspan
+           id="tspan23"
+           style="fill:#7f7f7f;fill-opacity:1;stroke-width:0.691"
+           x="30.050093"
+           y="68.820786">User Input</tspan></text>
+    </g>
+    <g
+       id="g22"
+       transform="translate(12.702767,51.714585)">
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#de9fae;stroke-width:1.04185;stroke-dasharray:none;stroke-opacity:1"
+         id="rect16-4-76"
+         width="88.435677"
+         height="21.01442"
+         x="33.272827"
+         y="99.526619"
+         d="m 40.365193,99.526619 75.447597,0 a 5.8957119,5.8957119 45 0 1 5.89571,5.895711 v 9.48568 a 5.6330316,5.6330316 135 0 1 -5.63303,5.63303 H 39.402032 a 6.1292053,6.1292053 45 0 1 -6.129205,-6.12921 v -7.79284 a 7.0923661,7.0923661 135 0 1 7.092366,-7.092371 z"
+         transform="matrix(0.67804972,0,0,0.64876215,188.17623,-27.065864)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#e0a5b3;fill-opacity:1;stroke:none;stroke-width:0.690999;stroke-dasharray:none;stroke-opacity:1"
+         x="216.02846"
+         y="45.907421"
+         id="text17-8-2"><tspan
+           id="tspan17-9-9"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#e0a5b3;fill-opacity:1;stroke:none;stroke-width:0.691;stroke-opacity:1"
+           x="216.02846"
+           y="45.907421">PurchaseAgent</tspan></text>
+    </g>
+  </g>
+</svg>
